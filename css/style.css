@@ -72,7 +72,7 @@ body {
 
 @media screen and (max-aspect-ratio: 16/9) {
   .main-ctt {
-    width: calc(100vh * 9 / 16);
+    width: calc(100dvh * 9 / 16);
   }
 }
 
