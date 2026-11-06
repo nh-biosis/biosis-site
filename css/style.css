@@ -7,8 +7,8 @@
   --main-color: #2d2d5e;
   --sub-color: #68a2ff;
   --back-color: #fbfbfb;
-  --pctxt-fontsize: clamp(14px, 16px, 18px);
-  --pctxt-linehight: calc(var(--pctxt-fontsize) * 2);
+  --itdtxt-fontsize: clamp(10px, 2.35dvh, 100px);
+  --itdtxt-linehight: calc(var(--pctxt-fontsize) * 3);
   --sptxt-fontsize: clamp(11px, 13px, 15px);
   --sptxt-linehight: calc(var(--sptxt-fontsize) * 2);
   --light-weight: 300;
@@ -49,6 +49,7 @@ html {
 
   /* Internet Explorer・古いEdge用 */
   -ms-overflow-style: none;
+  
 }
 
 /* Chrome、Safari、新しいEdge（Chromium版）用 */
@@ -58,31 +59,44 @@ html::-webkit-scrollbar {
 
 body {
   width: 100vw;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main-ctt{
+  width: 100%;
+}
+
+@media screen and (max-aspect-ratio: 16/9) {
+  .main-ctt {
+    width: calc(100vh * 9 / 16);
+  }
 }
 
 main {
-  width: 100vw;
+  width: 100%;
 }
 
 #header {
-  width: 100vw;
+  width: 100%;
   height: var(--header-hight);
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--back-color);
+  background-color: var(--sub-color);
 }
 
 #hero {
-  width: 100vw;
+  width: 100%;
   height: var(--hero-hight);
-  background-color: var(--main-color);
 }
 
 #info {
-  width: 100vw;
+  width: 100%;
   height: var(--info-hight);
-  background-color: var(--back-color);
 }
 
 .info-flex {
@@ -97,17 +111,43 @@ main {
 #itd {
   width: 100%;
   height: 30%;
-  background-color: var(--sub-color);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.itd-txt {
-  width: 80%;
+.itd-txtbox {
+  width: 95%;
   height: 90%;
-  background-color: var(--back-color);
-  border-radius: 10vw;
+  background-color: rgba(250, 255, 209, 0.5);
+  border: solid 3px var(--back-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--subfont-color);
+}
+
+.itd-ttl {
+  margin-bottom: 10dvh;
+  width: 85%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+.itd-txt {
+  width: 85%;
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--itdtxt-fontsize);
+  line-height: var(--itdtxt-linehight);
 }
 
 #dic {
@@ -129,7 +169,7 @@ main {
   overflow-x: auto; /* 横方向にはみ出たらスクロール */
   white-space: nowrap; /* 子要素の自動改行を防ぐ */
   scrollbar-width: none; /* Firefox用 */
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
 #table::-webkit-scrollbar {
@@ -144,7 +184,6 @@ main {
 }
 
 #footer {
-  width: 100vw;
+  width: 100%;
   height: var(--footer-hight);
-  background-color: var(--main-color);
 }
