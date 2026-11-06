@@ -44,12 +44,13 @@ a:active {
 }
 
 html {
+  margin: 0;
+  padding: 0;
   /* Firefox用 */
   scrollbar-width: none;
 
   /* Internet Explorer・古いEdge用 */
   -ms-overflow-style: none;
-  
 }
 
 /* Chrome、Safari、新しいEdge（Chromium版）用 */
@@ -58,7 +59,10 @@ html::-webkit-scrollbar {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   width: 100vw;
+  height: 100svh;
   background-color: var(--main-color);
   display: flex;
   flex-direction: column;
@@ -66,13 +70,13 @@ body {
   align-items: center;
 }
 
-.main-ctt{
-  width: 100%;
+.main-ctt {
+  width: calc(100dvh * 9 / 16);
 }
 
-@media screen and (max-aspect-ratio: 16/9) {
+@media screen and (max-width: calc(100dvh * 9 / 16)) {
   .main-ctt {
-    width: calc(100dvh * 9 / 16);
+    width: 100%;
   }
 }
 
