@@ -71,10 +71,10 @@ body {
 }
 
 .main-ctt {
-  width: calc(100dvh * 9 / 16);
+  width: calc(100svh * 9 / 16);
 }
 
-@media screen and (max-width: calc(100dvh * 9 / 16)) {
+@media screen and (max-width: calc(100svh * 9 / 16)) {
   .main-ctt {
     width: 100%;
   }
