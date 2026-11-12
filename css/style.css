@@ -16,9 +16,9 @@
   --bold-weight: 500;
   --heavy-weight: 700;
   --header-hight: 50px;
-  --hero-hight: 100dvh;
-  --info-hight: 300dvh;
-  --footer-hight: 100dvh;
+  --hero-hight: var(--screen-height);
+  --info-hight: calc(var(--screen-height) *3);
+  --footer-hight: var(--screen-height);
 }
 
 a {
@@ -62,7 +62,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100svh;
+  height: auto;
   background-color: var(--main-color);
   display: flex;
   flex-direction: column;
@@ -161,6 +161,36 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.dic-table {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dic-tr {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dic-td {
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  background-color: rgba(250, 255, 209, 0.5);
+  border: solid 3px var(--back-color);
+}
+
+.dic-space {
+  height: 100%;
+  width: 5%;
 }
 
 #table {
