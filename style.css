@@ -1,0 +1,411 @@
+@charset "UTF-8";
+
+:root {
+  --main-font: "Zen Kaku Gothic New", sans-serif;
+  --font-color: #231815;
+  --subfont-color: #fbfbfb;
+  --main-color: #081825;
+  --sub-color: #5f82ac;
+  --back-color: rgba(255, 255, 255, 0.5);
+  --stn-mg: calc(var(--screen-height) / 10);
+  --txt-mg: calc(var(--screen-height) / 45);
+  --border-size: calc(var(--screen-height)/660);
+  --underline-offset: calc(var(--border-size) * 8);
+  --itd-ttl-fontsize: calc(100cqw / 10);
+  --itd-txt-fontsize: calc(100cqw / 24);
+  --itd-txt-linehight: calc(var(--itdtxt-fontsize) * 2);
+  --dic-ttl-fontsize: calc(100cqw / 15);
+  --dic-txt-fontsize: calc(100cqw / 28);
+  --dic-txt-linehight: calc(var(--dic-txt-fontsize) * 2);
+  --mtd-ttl-fontsize: calc(100cqw / 15);
+  --mtd-box-ttl-fontsize: calc(100cqw / 15);
+  --mtd-box-txt-fontsize: calc(100cqw / 25);
+  --mtd-box-txt-linehight: calc(var(--mtd-box-txt-fontsize) * 2);
+  --light-weight: 300;
+  --nomal-weight: 400;
+  --bold-weight: 500;
+  --heavy-weight: 700;
+  --header-hight: calc(var(--screen-height) / 17);
+  --hero-hight: var(--screen-height);
+  --itd-hight: var(--screen-height);
+  --mtd-hight: calc(var(--screen-height) * 1.5);
+  --dic-hight: auto;
+  --table-hight: var(--screen-height);
+  --footer-hight: var(--screen-height);
+}
+
+/* @media screen and (max-width: calc(100svh * 9 / 16)) {
+  :root {
+    --itd-txt-fontsize: clamp(8px, calc(100cqw / 24), 18px);
+    --itd-txt-linehight: calc(var(--itdtxt-fontsize) * 2);
+    --dic-ttl-fontsize: clamp(8px, calc(100% / 15), 18px);
+    --dic-txt-fontsize: clamp(8px, calc(100% / 28), 18px);
+    --dic-txt-linehight: calc(var(--sptxt-fontsize) * 2);
+  }
+} */
+
+a {
+  pointer-events: auto;
+}
+
+a:link {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--sub-color);
+}
+
+a:active {
+  color: var(--sub-color);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  /* Firefox用 */
+  scrollbar-width: none;
+
+  /* Internet Explorer・古いEdge用 */
+  -ms-overflow-style: none;
+}
+
+/* Chrome、Safari、新しいEdge（Chromium版）用 */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: auto;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--subfont-color);
+}
+
+.main-ctt {
+  width: calc(var(--screen-height) * 9 / 16);
+}
+
+@media screen and (max-width: calc(100svh * 9 / 16)) {
+  .main-ctt {
+    width: 100%;
+  }
+}
+
+main {
+  width: 100%;
+}
+
+#header {
+  width: 100%;
+  height: var(--header-hight);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--sub-color);
+  z-index: 10;
+}
+
+#hero {
+  width: 100%;
+  height: var(--hero-hight);
+  background-color: var(--main-color);
+}
+
+#info {
+  width: 100%;
+  height: auto;
+}
+
+.info-flex {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#itd {
+  width: 100%;
+  height: var(--itd-hight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itd-txtbox {
+  padding: 20% 0 20% 0;
+  width: 95%;
+  height: auto;
+  background-color: var(--back-color);
+  border: solid var(--border-size) var(--back-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itd-ttl {
+  margin-bottom: 10%;
+  width: auto;
+  height: auto;
+  font-size: var(--itd-ttl-fontsize);
+}
+
+.itd-txt {
+  width: 85%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--itd-txt-fontsize);
+  line-height: var(--itd-txt-linehight);
+}
+
+#mtd {
+  margin-top: var(--stn-mg);
+  margin-bottom: var(--stn-mg);
+  width: 100%;
+  height: var(--mtd-hight);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mtd-ttl {
+  margin-bottom: 15%;
+  height: auto;
+  width: auto;
+  font-size: var(--mtd-ttl-fontsize);
+  text-decoration: underline var(--subfont-color) var(--border-size);
+  text-underline-offset: var(--underline-offset);
+}
+
+.mtd-box {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 40%;
+  width: 100%;
+  position: relative;
+}
+
+.mtd-img1,
+.mtd-img2 {
+  height: 60%;
+  width: 70%;
+  position: absolute;
+  background-color: var(--back-color);
+  z-index: 5;
+}
+
+.mtd-txt-box1,
+.mtd-txt-box2 {
+  height: 50%;
+  width: 70%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
+}
+
+.mtd-txt-ttl1,
+.mtd-txt-ttl2 {
+  width: auto;
+  height: calc(100% / 5);
+  display: flex;
+  align-items: center;
+  font-size: var(--mtd-box-ttl-fontsize);
+}
+
+.mtd-txt1,
+.mtd-txt2 {
+  width: auto;
+  height: calc(100% * 3 / 4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--mtd-box-txt-fontsize);
+  line-height: var(--mtd-box-txt-linehight);
+}
+.mtd-img1 {
+  top: 0;
+  left: 0;
+  border-radius: 0 9999px 9999px 0;
+}
+
+.mtd-txt-box1 {
+  right: 0;
+  bottom: 0;
+}
+
+.mtd-txt-ttl1 {
+  padding-right: 5%;
+  justify-content: right;
+}
+
+.mtd-txt1 {
+  padding-right: 5%;
+}
+
+.mtd-img2 {
+  top: 0;
+  right: 0;
+  border-radius: 9999px 0 0 9999px;
+}
+
+.mtd-txt-box2 {
+  left: 0;
+  bottom: 0;
+}
+
+.mtd-txt-ttl2 {
+  padding-left: 5%;
+  justify-content: left;
+}
+
+.mtd-txt2 {
+  padding-left: 5%;
+}
+
+#dic {
+  margin-top: var(--stn-mg);
+  margin-bottom: var(--stn-mg);
+  width: 100%;
+  height: var(--dic-hight);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dic-ttl {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-size: var(--dic-ttl-fontsize);
+  margin-bottom: var(--txt-mg);
+  text-decoration: underline var(--subfont-color) var(--border-size);
+  text-underline-offset: var(--underline-offset);
+}
+.dic-txt {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-size: var(--dic-txt-fontsize);
+  line-height: var(--dic-txt-linehight);
+  margin-bottom: var(--txt-mg);
+}
+
+.dic-table {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dic-tr {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dic-td {
+  width: 40%;
+  margin: 2%;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  background-color: var(--back-color);
+  border: solid var(--border-size) var(--back-color);
+}
+
+.dic-space {
+  height: 100%;
+  width: 3%;
+}
+
+#table {
+  margin-top: var(--stn-mg);
+  margin-bottom: var(--stn-mg);
+  width: 100%;
+  height: var(--table-hight);
+  background-color: var(--sub-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--main-color) 0%, var(--sub-color) 60%, var(--main-color) 100%);
+}
+
+.table-ttl {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-size: var(--dic-ttl-fontsize);
+  margin-bottom: var(--txt-mg);
+  text-decoration: underline var(--subfont-color) var(--border-size);
+  text-underline-offset: var(--underline-offset);
+}
+.table-txt {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-size: var(--dic-txt-fontsize);
+  line-height: var(--dic-txt-linehight);
+  margin-bottom: var(--txt-mg);
+}
+
+.table-stn {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto; /* 横方向にはみ出たらスクロール */
+  white-space: nowrap; /* 子要素の自動改行を防ぐ */
+  scrollbar-width: none; /* Firefox用 */
+  /* -webkit-overflow-scrolling: touch; */
+}
+
+#table::-webkit-scrollbar {
+  display: none;
+}
+
+.table-scr {
+  height: 90%;
+  aspect-ratio: 10/1;
+  overflow: x;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.table-scr-itm {
+  width: 8%;
+  height: 80%;
+  border: solid var(--border-size) var(--back-color);
+}
+
+#footer {
+  width: 100%;
+  height: var(--footer-hight);
+}
