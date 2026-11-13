@@ -5,8 +5,8 @@
   --font-color: #231815;
   --subfont-color: #fbfbfb;
   --main-color: #081825;
-  --sub-color: #a5c0e2;
-  --back-color: #fbfbfb;
+  --sub-color: #5F82AC;
+  --back-color: rgba(255, 255, 255, 0.5);
   --stn-mg: calc(var(--screen-height) / 10);
   --txt-mg: calc(var(--screen-height) / 45);
   --border-size: calc(var(--screen-height)/660);
@@ -18,8 +18,8 @@
   --dic-txt-fontsize: calc(100cqw / 28);
   --dic-txt-linehight: calc(var(--dic-txt-fontsize) * 2);
   --mtd-ttl-fontsize: calc(100cqw / 15);
-  --mtd-box-ttl-fontsize: calc(100cqw / 19);
-  --mtd-box-txt-fontsize: calc(100cqw / 30);
+  --mtd-box-ttl-fontsize: calc(100cqw / 15);
+  --mtd-box-txt-fontsize: calc(100cqw / 25);
   --mtd-box-txt-linehight: calc(var(--mtd-box-txt-fontsize) * 2);
   --light-weight: 300;
   --nomal-weight: 400;
@@ -121,6 +121,7 @@ main {
 #hero {
   width: 100%;
   height: var(--hero-hight);
+  background-color: var(--main-color);
 }
 
 #info {
@@ -149,7 +150,7 @@ main {
   padding: 20% 0 20% 0;
   width: 95%;
   height: auto;
-  background-color: rgba(250, 255, 209, 0.5);
+  background-color: var(--back-color);
   border: solid var(--border-size) var(--back-color);
   border-radius: 20px;
   display: flex;
@@ -217,13 +218,16 @@ main {
   height: 50%;
   width: 70%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   z-index: 3;
 }
 
 .mtd-txt-ttl1,
 .mtd-txt-ttl2 {
   width: auto;
-  height: calc(100% / 3);
+  height: calc(100% / 5);
   display: flex;
   align-items: center;
   font-size: var(--mtd-box-ttl-fontsize);
@@ -232,7 +236,7 @@ main {
 .mtd-txt1,
 .mtd-txt2 {
   width: auto;
-  height: calc(100% * 2 / 3);
+  height: calc(100% * 3 / 4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -330,7 +334,7 @@ main {
   margin: 2%;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  background-color: rgba(250, 255, 209, 0.5);
+  background-color: var(--back-color);
   border: solid var(--border-size) var(--back-color);
 }
 
