@@ -5,7 +5,7 @@
   --font-color: #231815;
   --subfont-color: #fbfbfb;
   --main-color: #081825;
-  --sub-color: #5F82AC;
+  --sub-color: #5f82ac;
   --back-color: rgba(255, 255, 255, 0.5);
   --stn-mg: calc(var(--screen-height) / 10);
   --txt-mg: calc(var(--screen-height) / 45);
@@ -25,7 +25,7 @@
   --nomal-weight: 400;
   --bold-weight: 500;
   --heavy-weight: 700;
-  --header-hight: 50px;
+  --header-hight: calc(var(--screen-height) / 17);
   --hero-hight: var(--screen-height);
   --itd-hight: var(--screen-height);
   --mtd-hight: calc(var(--screen-height) * 1.5);
