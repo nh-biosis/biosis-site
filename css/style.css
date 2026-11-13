@@ -25,7 +25,7 @@
   --nomal-weight: 400;
   --bold-weight: 500;
   --heavy-weight: 700;
-  --header-hight: calc(var(--screen-height) / 17);
+  --header-hight: calc(var(--screen-height) / 15);
   --hero-hight: var(--screen-height);
   --itd-hight: var(--screen-height);
   --mtd-hight: calc(var(--screen-height) * 1.5);
