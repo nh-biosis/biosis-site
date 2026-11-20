@@ -30,48 +30,59 @@ document.addEventListener("DOMContentLoaded", () => {
   // 図鑑データ
   const dicData = [
     {
-      name: "矢印マシ",
+      name: "矢印マン",
+      caption: "",
       text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
     },
     {
       name: "ガブガブ",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      caption: "( ガブガシックスユー 通称：がぶがーぶ )",
+      text: "Biosisのプロトタイプとして作られた\n最初の個体。\n好奇心旺盛で活発に動き、実験中に他の\nBiosisによくイタズラをしていた。\n愛称は「ガブちゃん」",
     },
     {
       name: "ミュルモ",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      caption: "",
+      text: "水槽の中をゆったりと漂う。感情の表れが乏しく、何を考えているのか読み取ることは難しい。身の危険を感じると体の一部が変色し、腕を上げて体を大きく見せようとする。",
     },
     {
       name: "双子",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      caption: "( 学名_Clionce Geminastella )",
+      text: "三つのコアを宿し、半透明な双翼で泳ぐ双子のクリオネ。感情に応じてコアの色が変化する特性を持つ。餌を摂取する際は、二体が一つに融合し、頭部の皮膚を開いてコアへ直接餌を取り込む。",
     },
     {
       name: "クルシェル",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      caption: "",
+      text: "ヤドカリに似た姿と性質を持ち、気に入った貝や岩に住み続ける。額の目のようなものはほんのり明るく視界を照らし、感情で変色する。本来少しなら泳げるが、背中の甲羅が重くて泳げない。",
     },
     {
-      name: "ウミミツク",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      name: "ウミタツノコ",
+      caption: "( Infant sea dragon )",
+      text: "ウミウシが進化をした姿。ゆっくりとした動きで海底を歩いている。呑気な性格で何をしても滅多に怒ることはないが、怒らせるとかなり怖いとされている。有毒そうな見た目をしているが無毒である。",
     },
     {
       name: "ぺたん",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      caption: "",
+      text: "ペンギンのような姿と、花びらのような大きなヒレを持つ。花びらは手のように自由に動き、嬉しいときには大きく広げて感情を表現する。季節によって花の種類や色が変化し、四季折々の姿を見せる。",
     },
     {
       name: "エイ",
+      caption: "",
       text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
     },
     {
       name: "ルミィ",
+      caption: "",
       text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
     },
     {
-      name: "メタエルモ",
+      name: "メタエモル",
+      caption: "",
       text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
     },
     {
-      name: "タン",
-      text: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
+      name: "タソガレサクラ",
+      caption: "( tasogare-sakura )",
+      text: "3Dのビオシス発売記念で生み出された。\n巫女のような見た目らしく、たまにおみくじで占ってくれるがいい結果しか出ない。がっかりさせたくないので、こっそり引き直しているのだ。",
     },
   ];
 
@@ -79,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("dic-popup");
   const popupImg = popup.querySelector(".dic-popup-img");
   const popupName = popup.querySelector(".dic-popup-name");
+  const popupCaption = popup.querySelector(".dic-popup-caption");
   const popupTxt = popup.querySelector(".dic-popup-txt");
 
   const closeBtn = popup.querySelector(".dic-popup-close");
@@ -104,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 名前と説明
     popupName.textContent = data.name;
+    popupCaption.textContent = data.caption || "";
     popupTxt.textContent = data.text;
   }
 
@@ -166,8 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
 const tableStn = document.querySelector(".table-stn");
 
 let isDragging = false;
@@ -186,8 +197,7 @@ tableStn.addEventListener("mousedown", (e) => {
 window.addEventListener("mousemove", (e) => {
   if (!isDragging) return;
 
-  tableStn.scrollLeft =
-    startScrollLeft - (e.clientX - startX);
+  tableStn.scrollLeft = startScrollLeft - (e.clientX - startX);
 });
 
 window.addEventListener("mouseup", () => {
@@ -195,64 +205,111 @@ window.addEventListener("mouseup", () => {
 });
 
 // ホイール操作
-tableStn.addEventListener("wheel", (e) => {
-  const maxScroll =
-    tableStn.scrollWidth - tableStn.clientWidth;
+tableStn.addEventListener(
+  "wheel",
+  (e) => {
+    const maxScroll = tableStn.scrollWidth - tableStn.clientWidth;
 
-  if (maxScroll <= 0) return;
+    if (maxScroll <= 0) return;
 
-  // ホイールの縦方向を横方向に変換
-  const delta = e.deltaY !== 0 ? e.deltaY : e.deltaX;
+    // ホイールの縦方向を横方向に変換
+    const delta = e.deltaY !== 0 ? e.deltaY : e.deltaX;
 
-  const canScroll =
-    (delta > 0 && tableStn.scrollLeft < maxScroll) ||
-    (delta < 0 && tableStn.scrollLeft > 0);
+    const canScroll = (delta > 0 && tableStn.scrollLeft < maxScroll) || (delta < 0 && tableStn.scrollLeft > 0);
 
-  if (canScroll) {
-    e.preventDefault();
-    tableStn.scrollLeft += delta;
-  }
-}, { passive: false });
+    if (canScroll) {
+      e.preventDefault();
+      tableStn.scrollLeft += delta;
+    }
+  },
+  { passive: false },
+);
 
 const scrollHint = document.querySelector(".table-scroll-hint");
 
-tableStn.addEventListener("scroll", () => {
-  scrollHint.classList.toggle(
-    "is-hidden",
-    tableStn.scrollLeft > 5
-  );
-}, { passive: true });
-
-
-
-
-
+tableStn.addEventListener(
+  "scroll",
+  () => {
+    scrollHint.classList.toggle("is-hidden", tableStn.scrollLeft > 5);
+  },
+  { passive: true },
+);
 
 const historyData = [
   {
     img: "img/history01.png",
-    txt: "初めてのビオシス<br>が観測される",
+    txt: "初めてのビオシス\nが観測される",
     name: "矢印マン",
-    date: "2113"
+    date: "2113",
   },
   {
     img: "img/history02.png",
-    txt: "BIosis<br>プロトタイプ誕生",
+    txt: "BIosis\nプロトタイプ誕生",
     name: "Gabuga-6u",
-    date: "2121"
+    date: "2121",
   },
   {
     img: "img/history03.png",
-    txt: "民間用初のビオシス",
+    txt: "民間用初ビオシス",
     name: "ミュルモ",
-    date: "2123.02"
-  }
+    date: "2123.02",
+  },
+  {
+    img: "img/history03.png",
+    txt: "感情表現が分かりやすくなったモデル",
+    name: "ステラ",
+    date: "2123.08",
+  },
+  {
+    img: "img/history03.png",
+    txt: "初の歩行型ビオシス",
+    name: "クルシェル",
+    date: "2124.01",
+  },
+  {
+    img: "img/history03.png",
+    txt: "流動歩行型ビオシス",
+    name: "ウミタツノコ",
+    date: "2124.06",
+  },
+  {
+    img: "img/history03.png",
+    txt: "児童向けビオシス",
+    name: "ぺたん",
+    date: "2125.04",
+  },
+  {
+    img: "img/history03.png",
+    txt: "ハロウィンに生まれた\n怖かわ系ビオシス",
+    name: "ミュルモ",
+    date: "2125.10",
+  },
+  {
+    img: "img/history03.png",
+    txt: "初の人型ビオシス",
+    name: "ルミィ",
+    date: "2126.05",
+  },
+  {
+    img: "img/history03.png",
+    txt: "3Dプロトタイプ",
+    name: "メタエモル",
+    date: "2126.11",
+  },
+  {
+    img: "img/history03.png",
+    txt: "正式版3Dモデル",
+    name: "タソガレサクラ",
+    date: "2127.01",
+  },
 ];
 
 // 年表を自動生成
 const tableScr = document.querySelector(".table-scr");
 
-tableScr.innerHTML = historyData.map(item => `
+tableScr.innerHTML = historyData
+  .map(
+    (item) => `
   <div class="table-scr-itm">
     <div class="table-itm-img">
       <img src="${item.img}" alt="${item.name}" draggable="false">
@@ -262,4 +319,6 @@ tableScr.innerHTML = historyData.map(item => `
     <div class="table-itm-line"></div>
     <div class="table-itm-date">${item.date}</div>
   </div>
-`).join("");
+`,
+  )
+  .join("");

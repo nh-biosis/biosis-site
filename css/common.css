@@ -2,7 +2,8 @@
 
 :root {
   --popup-nav-fontsize: calc(100cqw / 15);
-  --popup-ttl-fontsize: calc(100cqw / 15);
+  --popup-ttl-fontsize: calc(100cqw / 20);
+  --popup-subttl-fontsize: calc(100cqw / 40);
   --popup-txt-fontsize: calc(100cqw / 24);
   --popup-txt-linehight: calc(var(--popup-txt-fontsize) * 2);
   --cls-btn-mg: calc(var(--screen-height) / 80);
@@ -74,7 +75,7 @@
   width: 100%;
   height: 6%;
 
-  background-color: #fff;
+  background-color: var(--subfont-color);
   border-radius: 100px;
 
   transition:
@@ -104,7 +105,7 @@
 
 .menu-btn.active span:nth-child(1) {
   top: 47%;
-  transform: rotate(45deg);
+  transform: rotate(45deg) scaleY(1.55);
 }
 
 .menu-btn.active span:nth-child(2) {
@@ -113,7 +114,7 @@
 
 .menu-btn.active span:nth-child(3) {
   top: 47%;
-  transform: rotate(-45deg);
+  transform: rotate(-45deg) scaleY(1.55);
 }
 
 /* ==========================
@@ -285,17 +286,44 @@
 /* 閉じるボタン */
 .dic-popup-close {
   position: absolute;
-  top: var(--cls-btn-mg);
-  right: var(--cls-btn-mg);
-  height: var(--cls-btn-size);
-  width: var(--cls-btn-size);
-  display: flex;
-  justify-content: center;
-  text-align: center;
+  top: 3%;
+  right: 3%;
+
+  width: 8%;
+  aspect-ratio: 1 / 1;
+
+  padding: 0;
   border: none;
   border-radius: 50%;
+  background-color:var(--subfont-color);
 
   cursor: pointer;
+}
+
+/* バツの2本線 */
+.dic-popup-close::before,
+.dic-popup-close::after {
+  content: "";
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 60%;
+  height: 8%;
+
+  background-color: var(--main-color);
+  border-radius: 999px;
+}
+
+/* 右下がりの線 */
+.dic-popup-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 右上がりの線 */
+.dic-popup-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* キャラクター画像 */
@@ -319,10 +347,30 @@
   align-items: center;
 }
 
+
+/* 名前とキャプション */
+.dic-popup-namebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
 .dic-popup-name {
   text-align: center;
   font-weight: bold;
   font-size: var(--popup-ttl-fontsize);
+}
+
+.dic-popup-caption {
+  text-align: center;
+  font-size: var(--popup-subttl-fontsize);
+}
+
+/* キャプションがない場合は非表示 */
+.dic-popup-caption:empty {
+  display: none;
 }
 
 .dic-popup-prev,
@@ -336,11 +384,13 @@
 
 /* 説明 */
 .dic-popup-txt {
-  width: 90%;
+  margin-top: 2%;
+  width: 80%;
   height: auto;
   text-align: left;
   font-size: var(--popup-txt-fontsize);
   line-height: var(--popup-txt-linehight);
+  white-space: pre-line;
 }
 
 /* 既存の図鑑アイコン */

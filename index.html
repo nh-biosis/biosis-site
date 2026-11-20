@@ -41,7 +41,10 @@
         </nav>
       </header>
       <main>
-        <section id="hero"></section>
+        <div class="header-back"></div>
+        <section id="hero">
+          <div class="main-logo">ロゴ仮置き場</div>
+        </section>
         <section id="info">
           <div class="info-flex">
             <div id="itd">
@@ -111,7 +114,7 @@
             <div id="dic-popup" aria-hidden="true">
               <div class="dic-popup-card" role="dialog" aria-modal="true" aria-label="図鑑詳細">
                 <!-- 閉じるボタン -->
-                <button class="dic-popup-close" type="button">×</button>
+                <button class="dic-popup-close" type="button" aria-label="閉じる"></button>
 
                 <!-- キャラクター画像 -->
                 <div class="dic-popup-img"></div>
@@ -120,7 +123,10 @@
                 <div class="dic-popup-nav">
                   <button class="dic-popup-prev" type="button">◀</button>
 
-                  <div class="dic-popup-name"></div>
+                  <div class="dic-popup-namebox">
+                    <div class="dic-popup-name"></div>
+                    <div class="dic-popup-caption"></div>
+                  </div>
 
                   <button class="dic-popup-next" type="button">▶</button>
                 </div>
@@ -148,8 +154,19 @@
             </div>
           </div>
         </section>
+        <footer id="footer">
+          <div class="footer-main">
+            <div class="footer-ttl">Xにて情報配信中</div>
+            <div class="footer-subttl">後日こちらでビオシスを配布予定！</div>
+            <div class="footer-qr-box">
+              <div class="footer-qr"></div>
+              <div class="footer-qr-txt">@HOLOGRAMbiosis</div>
+            </div>
+            <div class="footer-txt">展示の見どころや当日のブースの様子など、ビオシスにまつわる情報も発信しています!</div>
+          </div>
+          <div class="footer-box"></div>
+        </footer>
       </main>
-      <footer id="footer"></footer>
     </div>
     <script src="js/script.js"></script>
   </body>
