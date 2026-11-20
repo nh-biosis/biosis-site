@@ -7,7 +7,7 @@
   --main-color: #081825;
   --sub-color: #5f82ac;
   --back-color: rgba(255, 255, 255, 0.5);
-  --stn-mg: calc(var(--screen-height) / 10);
+  --stn-pg: calc(var(--screen-height) / 10);
   --txt-mg-lrg: calc(var(--screen-height) / 15);
   --txt-mg: calc(var(--screen-height) / 20);
   --border-size: calc(var(--screen-height)/660);
@@ -51,10 +51,10 @@
   --heavy-weight: 700;
   --header-hight: calc(var(--screen-height) / 15);
   --hero-hight: var(--screen-height);
-  --itd-hight: var(--screen-height);
-  --mtd-hight: calc(var(--screen-height) * 1.5);
+  --itd-hight: calc(var(--screen-height) * 1.2);
+  --mtd-hight: calc(var(--screen-height) * 1.7);
   --dic-hight: auto;
-  --table-hight: var(--screen-height);
+  --table-hight: calc(var(--screen-height) * 1.2);
   --footer-hight: var(--screen-height);
 }
 
@@ -162,6 +162,8 @@ main {
 }
 
 #itd {
+  padding-top: var(--stn-pg);
+  padding-bottom: var(--stn-pg);
   width: 100%;
   height: var(--itd-hight);
   display: flex;
@@ -200,8 +202,8 @@ main {
 }
 
 #mtd {
-  margin-top: var(--stn-mg);
-  margin-bottom: var(--stn-mg);
+  padding-top: var(--stn-pg);
+  padding-bottom: var(--stn-pg);
   width: 100%;
   height: var(--mtd-hight);
   display: flex;
@@ -307,8 +309,8 @@ main {
 }
 
 #dic {
-  margin-top: var(--stn-mg);
-  margin-bottom: var(--stn-mg);
+  padding-top: var(--stn-pg);
+  padding-bottom: var(--stn-pg);
   width: 100%;
   height: var(--dic-hight);
   display: flex;
@@ -362,8 +364,8 @@ main {
 }
 
 #table {
-  margin-top: var(--stn-mg);
-  margin-bottom: var(--stn-mg);
+  padding-top: var(--stn-pg);
+  padding-bottom: var(--stn-pg);
   width: 100%;
   height: var(--table-hight);
   background-color: var(--sub-color);
@@ -543,7 +545,7 @@ main {
   position: absolute;
 
   right: 5%;
-  bottom: 0%;
+  bottom: 10%;
 
   z-index: 10;
 
