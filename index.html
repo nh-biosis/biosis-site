@@ -16,7 +16,30 @@
   </head>
   <body>
     <div class="main-ctt">
-      <header id="header"></header>
+      <header id="header">
+        <div class="header-main">
+          <!-- ロゴ -->
+          <a href="#" class="header-logo">
+            <img src="img/logo.png" alt="HOLOGRAM biosis" />
+          </a>
+
+          <!-- メニューボタン -->
+          <button class="menu-btn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="header-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <!-- 展開メニュー -->
+        <nav id="header-menu" class="header-menu" inert>
+          <ul>
+            <li><a href="#about">Biosisについて</a></li>
+            <li><a href="#dic">図鑑</a></li>
+            <li><a href="#history">HISTORY</a></li>
+          </ul>
+        </nav>
+      </header>
       <main>
         <section id="hero"></section>
         <section id="info">
@@ -60,28 +83,50 @@
               </div>
               <div class="dic-table">
                 <div class="dic-tr">
-                  <div class="dic-td dic-img1"></div>
+                  <div class="dic-td"><div class="dic-img1"></div></div>
                 </div>
                 <div class="dic-tr">
-                  <div class="dic-td dic-img2"></div>
-                  <div class="dic-td dic-img3"></div>
+                  <div class="dic-td"><div class="dic-img2"></div></div>
+                  <div class="dic-td"><div class="dic-img3"></div></div>
                 </div>
                 <div class="dic-tr">
-                  <div class="dic-td dic-img4"></div>
-                  <div class="dic-td dic-img5"></div>
+                  <div class="dic-td"><div class="dic-img4"></div></div>
+                  <div class="dic-td"><div class="dic-img5"></div></div>
                 </div>
                 <div class="dic-tr">
-                  <div class="dic-td dic-img6"></div>
-                  <div class="dic-td dic-img7"></div>
+                  <div class="dic-td"><div class="dic-img6"></div></div>
+                  <div class="dic-td"><div class="dic-img7"></div></div>
                 </div>
                 <div class="dic-tr">
-                  <div class="dic-td dic-img8"></div>
-                  <div class="dic-td dic-img9"></div>
+                  <div class="dic-td"><div class="dic-img8"></div></div>
+                  <div class="dic-td"><div class="dic-img9"></div></div>
                 </div>
                 <div class="dic-tr">
-                  <div class="dic-td dic-img10"></div>
-                  <div class="dic-td dic-img11"></div>
+                  <div class="dic-td"><div class="dic-img10"></div></div>
+                  <div class="dic-td"><div class="dic-img11"></div></div>
                 </div>
+              </div>
+            </div>
+            <!-- 図鑑POPUP -->
+            <div id="dic-popup" aria-hidden="true">
+              <div class="dic-popup-card" role="dialog" aria-modal="true" aria-label="図鑑詳細">
+                <!-- 閉じるボタン -->
+                <button class="dic-popup-close" type="button">×</button>
+
+                <!-- キャラクター画像 -->
+                <div class="dic-popup-img"></div>
+
+                <!-- 名前・切り替え -->
+                <div class="dic-popup-nav">
+                  <button class="dic-popup-prev" type="button">◀</button>
+
+                  <div class="dic-popup-name"></div>
+
+                  <button class="dic-popup-next" type="button">▶</button>
+                </div>
+
+                <!-- 説明 -->
+                <div class="dic-popup-txt"></div>
               </div>
             </div>
             <div id="table">
@@ -90,18 +135,14 @@
                 ビオシスの原点となるプロトタイプの誕生。<br />
                 技術とともに変化してきた、その軌跡を辿ります。
               </div>
-              <div class="table-stn">
-                <div class="table-scr">
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
-                  <div class="table-scr-itm"></div>
+
+              <div class="table-wrap">
+                <div class="table-stn">
+                  <div class="table-scr"></div>
+                </div>
+
+                <div class="table-scroll-hint">
+                  <span>»</span>
                 </div>
               </div>
             </div>

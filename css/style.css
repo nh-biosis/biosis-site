@@ -8,8 +8,10 @@
   --sub-color: #5f82ac;
   --back-color: rgba(255, 255, 255, 0.5);
   --stn-mg: calc(var(--screen-height) / 10);
-  --txt-mg: calc(var(--screen-height) / 45);
+  --txt-mg: calc(var(--screen-height) / 20);
   --border-size: calc(var(--screen-height)/660);
+  --table-border: calc(var(--screen-height)/660);
+  --table-border-bottom: calc(var(--screen-height)/220);
   --underline-offset: calc(var(--border-size) * 8);
   --itd-ttl-fontsize: calc(100cqw / 10);
   --itd-txt-fontsize: calc(100cqw / 24);
@@ -21,6 +23,12 @@
   --mtd-box-ttl-fontsize: calc(100cqw / 15);
   --mtd-box-txt-fontsize: calc(100cqw / 25);
   --mtd-box-txt-linehight: calc(var(--mtd-box-txt-fontsize) * 2);
+  --table-ttl-fontsize: calc(100cqw / 15);
+  --table-txt-fontsize: calc(100cqw / 28);
+  --table-txt-linehight: calc(var(--table-txt-fontsize) * 2);
+  --table-box-ttl-fontsize: calc(100cqw / 20);
+  --table-box-txt-fontsize: calc(100cqw / 30);
+  --table-box-txt-linehight: calc(var(--table-box-txt-fontsize) * 2);
   --light-weight: 300;
   --nomal-weight: 400;
   --bold-weight: 500;
@@ -33,16 +41,6 @@
   --table-hight: var(--screen-height);
   --footer-hight: var(--screen-height);
 }
-
-/* @media screen and (max-width: calc(100svh * 9 / 16)) {
-  :root {
-    --itd-txt-fontsize: clamp(8px, calc(100cqw / 24), 18px);
-    --itd-txt-linehight: calc(var(--itdtxt-fontsize) * 2);
-    --dic-ttl-fontsize: clamp(8px, calc(100% / 15), 18px);
-    --dic-txt-fontsize: clamp(8px, calc(100% / 28), 18px);
-    --dic-txt-linehight: calc(var(--sptxt-fontsize) * 2);
-  }
-} */
 
 a {
   pointer-events: auto;
@@ -151,7 +149,7 @@ main {
   width: 95%;
   height: auto;
   background-color: var(--back-color);
-  border: solid var(--border-size) var(--back-color);
+  border: solid var(--border-size) var(--subfont-color);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -335,12 +333,7 @@ main {
   aspect-ratio: 1/1;
   border-radius: 10px;
   background-color: var(--back-color);
-  border: solid var(--border-size) var(--back-color);
-}
-
-.dic-space {
-  height: 100%;
-  width: 3%;
+  border: solid var(--border-size) var(--subfont-color);
 }
 
 #table {
@@ -360,7 +353,7 @@ main {
   height: auto;
   width: 100%;
   text-align: center;
-  font-size: var(--dic-ttl-fontsize);
+  font-size: var(--table-ttl-fontsize);
   margin-bottom: var(--txt-mg);
   text-decoration: underline var(--subfont-color) var(--border-size);
   text-underline-offset: var(--underline-offset);
@@ -369,40 +362,179 @@ main {
   height: auto;
   width: 100%;
   text-align: center;
-  font-size: var(--dic-txt-fontsize);
-  line-height: var(--dic-txt-linehight);
+  font-size: var(--table-txt-fontsize);
+  line-height: var(--table-txt-linehight);
   margin-bottom: var(--txt-mg);
+}
+
+.table-wrap {
+  position: relative;
+  width: 100%;
+  height: 70%;
+
+  /* cqwの基準を維持 */
+  container-type: inline-size;
 }
 
 .table-stn {
   width: 100%;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: auto; /* 横方向にはみ出たらスクロール */
-  white-space: nowrap; /* 子要素の自動改行を防ぐ */
-  scrollbar-width: none; /* Firefox用 */
-  /* -webkit-overflow-scrolling: touch; */
+  height: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  cursor: grab;
 }
 
-#table::-webkit-scrollbar {
+.table-stn::-webkit-scrollbar {
   display: none;
 }
 
+.table-stn:active {
+  cursor: grabbing;
+}
+
+/* 横長の年表全体 */
 .table-scr {
   height: 90%;
-  aspect-ratio: 10/1;
-  overflow: x;
+  width: max-content;
+  min-width: 100%;
+
   display: flex;
-  justify-content: space-around;
+  position: relative;
   align-items: center;
 }
 
+/* 年表を貫く横線 */
+.table-scr::before {
+  content: "";
+  position: absolute;
+
+  left: 0;
+  bottom: 12%;
+
+  width: 100%;
+  height: var(--table-border-bottom);
+
+  background-color: var(--subfont-color);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* それぞれの区画 */
 .table-scr-itm {
-  width: 8%;
-  height: 80%;
-  border: solid var(--border-size) var(--back-color);
+  width: 75cqw;
+  height: 100%;
+
+  flex-shrink: 0;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* キャラクター画像 */
+.table-itm-img {
+  width: 75%;
+  height: 48%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-itm-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 説明 */
+.table-itm-txt {
+  width: 90%;
+  height: 13%;
+
+  text-align: center;
+  font-size: var(--table-box-txt-fontsize);
+  line-height: var(--table-box-txt-linehight);
+  white-space: normal;
+}
+
+/* キャラクター名 */
+.table-itm-name {
+  width: 90%;
+  height: 10%;
+
+  text-align: center;
+  font-size: var(--table-box-ttl-fontsize);
+  white-space: normal;
+}
+
+/* 年表の縦線 */
+.table-itm-line {
+  position: absolute;
+
+  left: 50%;
+  bottom: 12%;
+
+  width: var(--table-border);
+  height: 12%;
+
+  background-color: var(--subfont-color);
+  transform: translateX(-50%);
+}
+
+/* 年代 */
+.table-itm-date {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 9%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: var(--dic-txt-fontsize);
+  letter-spacing: 0.1em;
+}
+
+.table-scroll-hint {
+  position: absolute;
+
+  right: 5%;
+  bottom: 0%;
+
+  z-index: 10;
+
+  pointer-events: none;
+
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.table-scroll-hint span {
+  font-size: calc(var(--screen-height) / 15);
+  color: var(--back-color);
+  opacity: 0.6;
+}
+
+.table-scroll-hint.is-hidden {
+  opacity: 0;
 }
 
 #footer {
