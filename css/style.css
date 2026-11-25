@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-  --main-font: "Zen Kaku Gothic New", sans-serif;
+  --main-font: "IBM Plex Sans JP", sans-serif;
   --font-color: #231815;
   --subfont-color: #fbfbfb;
   --main-color: #081825;
@@ -14,17 +14,21 @@
   --table-border: calc(var(--screen-height)/660);
   --table-border-bottom: calc(var(--screen-height)/220);
   --underline-offset: calc(var(--border-size) * 8);
-  --itd-ttl-fontsize: calc(100cqw / 10);
+  --itd-ttl-fontsize: calc(100cqw / 15);
+  --itd-ttl-ls: calc(var(--itd-ttl-fontsize) / 2);
   --itd-txt-fontsize: calc(100cqw / 24);
-  --itd-txt-linehight: calc(var(--itdtxt-fontsize) * 2);
+  --itd-txt-linehight: calc(var(--itd-txt-fontsize) * 2);
   --dic-ttl-fontsize: calc(100cqw / 15);
+  --dic-ttl-ls: calc(var(--dic-ttl-fontsize) / 5);
   --dic-txt-fontsize: calc(100cqw / 28);
   --dic-txt-linehight: calc(var(--dic-txt-fontsize) * 2);
   --mtd-ttl-fontsize: calc(100cqw / 15);
+  --mtd-ttl-ls: calc(var(--mtd-ttl-fontsize) / 5);
   --mtd-box-ttl-fontsize: calc(100cqw / 15);
   --mtd-box-txt-fontsize: calc(100cqw / 25);
   --mtd-box-txt-linehight: calc(var(--mtd-box-txt-fontsize) * 2);
   --table-ttl-fontsize: calc(100cqw / 15);
+  --table-ttl-ls: calc(var(--table-ttl-fontsize) / 5);
   --table-txt-fontsize: calc(100cqw / 28);
   --table-txt-linehight: calc(var(--table-txt-fontsize) * 2);
   --table-box-ttl-fontsize: calc(100cqw / 20);
@@ -33,6 +37,7 @@
   --table-box-date-fontsize: calc(100cqw / 25);
   --table-box-date-spacesize: calc(100cqw / 80);
   --ftr-ttl-fontsize: calc(100cqw / 15);
+  --ftr-ttl-ls: calc(var(--ftr-ttl-fontsize) / 5);
   --ftr-subttl-fontsize: calc(100cqw / 20);
   --ftr-txt-fontsize: calc(100cqw / 29);
   --ftr-txt-linehight: calc(var(--ftr-txt-fontsize) * 2);
@@ -107,6 +112,7 @@ body {
   justify-content: space-around;
   align-items: center;
   color: var(--subfont-color);
+  font-family: var(--main-font);
 }
 
 .main-ctt {
@@ -134,12 +140,17 @@ main {
   width: 100%;
   height: var(--hero-hight);
   background-color: var(--main-color);
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .main-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 50%;
   height: 10%;
   /* ロゴ入れたら消す */
@@ -191,6 +202,10 @@ main {
   font-size: var(--itd-ttl-fontsize);
 }
 
+.itd-ttl span {
+  letter-spacing: var(--itd-ttl-ls);
+}
+
 .itd-txt {
   width: 85%;
   height: auto;
@@ -219,6 +234,10 @@ main {
   font-size: var(--mtd-ttl-fontsize);
   text-decoration: underline var(--subfont-color) var(--border-size);
   text-underline-offset: var(--underline-offset);
+}
+
+.mtd-ttl span {
+  letter-spacing: var(--mtd-ttl-ls);
 }
 
 .mtd-box {
@@ -328,6 +347,11 @@ main {
   text-decoration: underline var(--subfont-color) var(--border-size);
   text-underline-offset: var(--underline-offset);
 }
+
+.dic-ttl span {
+  letter-spacing: var(--dic-ttl-ls);
+}
+
 .dic-txt {
   height: auto;
   width: 100%;
@@ -385,6 +409,11 @@ main {
   text-decoration: underline var(--subfont-color) var(--border-size);
   text-underline-offset: var(--underline-offset);
 }
+
+.table-ttl span {
+  letter-spacing: var(--table-ttl-ls);
+}
+
 .table-txt {
   height: auto;
   width: 100%;
@@ -545,7 +574,7 @@ main {
   position: absolute;
 
   right: 5%;
-  bottom: 10%;
+  bottom: calc(var(--screen-height) / 20);
 
   z-index: 10;
 
@@ -584,6 +613,10 @@ main {
   font-size: var(--ftr-ttl-fontsize);
   text-decoration: underline var(--subfont-color) var(--border-size);
   text-underline-offset: var(--underline-offset);
+}
+
+.footer-ttl span {
+  letter-spacing: var(--ftr-ttl-ls);
 }
 
 .footer-subttl {
