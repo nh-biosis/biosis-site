@@ -151,11 +151,11 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 10%;
-  /* ロゴ入れたら消す */
-  background-color: aqua;
-  color: #000;
+  width: 75%;
+  height: 15%;
+  background-image: url(../images/main-logo.png);
+  background-position: center;
+  background-size: contain;
   z-index: 5;
 }
 
@@ -292,6 +292,9 @@ main {
   top: 0;
   left: 0;
   border-radius: 0 9999px 9999px 0;
+  background-image: url(../images/feeding.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .mtd-txt-box1 {
@@ -312,6 +315,9 @@ main {
   top: 0;
   right: 0;
   border-radius: 9999px 0 0 9999px;
+  background-image: url(../images/play.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .mtd-txt-box2 {
@@ -725,7 +731,9 @@ main {
   height: var(--ftr-qr-hight);
   aspect-ratio: 1/1;
   border-radius: var(--ftr-qr-br);
-  background-color: #fff;
+  background-image: url(../images/qrcord.svg);
+  background-size: cover;
+  background-position: center;
 }
 
 .footer-qr-txt {
@@ -753,7 +761,9 @@ main {
 .footer-box-logo {
   width: 50%;
   height: 40%;
-  background-color: aqua;
+  background-image: url(../images/white-logo.png);
+  background-position: center;
+  background-size: contain;
 }
 
 .footer-box-btm {

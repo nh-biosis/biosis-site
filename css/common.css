@@ -45,8 +45,9 @@
 .header-logo {
   width: 50%;
   height: 100%;
-  background-color: aqua;
-  color: #000;
+  background-image: url(../images/white-logo.png);
+  background-position: center;
+  background-size: contain;
 }
 
 /* ==========================
@@ -226,9 +227,6 @@
   vertical-align: middle;
 }
 
-
-
-
 #floating-bg {
   position: absolute;
   inset: 0;
@@ -252,11 +250,6 @@
   user-select: none;
   will-change: transform, opacity;
 }
-
-
-
-
-
 
 /* POPUP全体 */
 #dic-popup {
