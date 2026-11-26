@@ -1,12 +1,9 @@
 const bg = document.getElementById("floating-bg");
 
-const random = (min, max) =>
-  Math.random() * (max - min) + min;
+const random = (min, max) => Math.random() * (max - min) + min;
 
 // 数値を滑らかに補間する関数
-const lerp = (min, max, z) =>
-  min + (max - min) * z;
-
+const lerp = (min, max, z) => min + (max - min) * z;
 
 // ===== 全体設定 =====
 
@@ -39,59 +36,49 @@ const near = {
   speed: 2,
 };
 
-
 // ===== キャラクター生成 =====
 
-const objects = Array.from(
-  { length: count },
-  (_, i) => {
-    const img = document.createElement("img");
+const objects = Array.from({ length: count }, (_, i) => {
+  const img = document.createElement("img");
 
-    img.src = `img/chara${i + 1}.png`;
-    img.className = "floating-chara";
-    img.alt = "";
-    img.draggable = false;
+  img.src = `images/chara${i + 1}.png`;
+  img.className = "floating-chara";
+  img.alt = "";
+  img.draggable = false;
 
-    bg.appendChild(img);
+  bg.appendChild(img);
 
-    return {
-      element: img,
+  return {
+    element: img,
 
-      // 初期位置
-      x: random(0.15, 0.85),
-      y: random(0.15, 0.85),
+    // 初期位置
+    x: random(0.15, 0.85),
+    y: random(0.15, 0.85),
 
-      // 移動方向
-      angle: random(0, Math.PI * 2),
+    // 移動方向
+    angle: random(0, Math.PI * 2),
 
-      // 動きの個体差
-      phase: random(0, Math.PI * 2),
-      frequency: random(0.5, 1.2),
-      turn: random(0.3, 0.8),
-      speed: random(0.8, 1.2),
+    // 動きの個体差
+    phase: random(0, Math.PI * 2),
+    frequency: random(0.5, 1.2),
+    turn: random(0.3, 0.8),
+    speed: random(0.8, 1.2),
 
-      // 奥行きの個体差
-      depthPhase: random(0, Math.PI * 2),
-      depthSpeed: random(0.7, 1.3),
-    };
-  }
-);
-
+    // 奥行きの個体差
+    depthPhase: random(0, Math.PI * 2),
+    depthSpeed: random(0.7, 1.3),
+  };
+});
 
 // ===== アニメーション =====
 
 let lastTime = null;
 let elapsed = 0;
 
-const reducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-);
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function animate(now) {
-
-  const dt = lastTime === null
-    ? 0
-    : Math.min((now - lastTime) / 1000, 0.05);
+  const dt = lastTime === null ? 0 : Math.min((now - lastTime) / 1000, 0.05);
 
   lastTime = now;
 
@@ -108,65 +95,39 @@ function animate(now) {
   }
 
   objects.forEach((obj) => {
-
     const img = obj.element;
 
     // 奥行き（0〜1）
-    const z = (
-      Math.sin(
-        elapsed *
-        (Math.PI * 2 / depthPeriod) *
-        obj.depthSpeed +
-        obj.depthPhase
-      ) + 1
-    ) / 2;
-
+    const z = (Math.sin(elapsed * ((Math.PI * 2) / depthPeriod) * obj.depthSpeed + obj.depthPhase) + 1) / 2;
 
     // ===== 奥行きに応じた変化 =====
 
     const size = lerp(far.size, near.size, z);
 
-    const opacity = lerp(
-      far.opacity, near.opacity, z
-    );
+    const opacity = lerp(far.opacity, near.opacity, z);
 
     const blur = lerp(far.blur, near.blur, z);
 
-    const speed =
-      baseSpeed *
-      lerp(far.speed, near.speed, z) *
-      obj.speed;
+    const speed = baseSpeed * lerp(far.speed, near.speed, z) * obj.speed;
 
     img.style.width = `${size}%`;
     img.style.opacity = opacity;
     img.style.filter = `blur(${blur}px)`;
     img.style.zIndex = Math.round(z * 100);
 
-
     // ===== 上下左右の移動 =====
 
-    obj.angle += Math.sin(
-      elapsed * obj.frequency + obj.phase
-    ) * obj.turn * step;
+    obj.angle += Math.sin(elapsed * obj.frequency + obj.phase) * obj.turn * step;
 
-    obj.x +=
-      Math.cos(obj.angle) *
-      speed * step * unit / width;
+    obj.x += (Math.cos(obj.angle) * speed * step * unit) / width;
 
-    obj.y +=
-      Math.sin(obj.angle) *
-      speed * step * unit / height;
-
+    obj.y += (Math.sin(obj.angle) * speed * step * unit) / height;
 
     // ===== 画面端での方向転換 =====
 
-    const halfW = Math.min(
-      0.5, img.offsetWidth / width / 2
-    );
+    const halfW = Math.min(0.5, img.offsetWidth / width / 2);
 
-    const halfH = Math.min(
-      0.5, img.offsetHeight / height / 2
-    );
+    const halfH = Math.min(0.5, img.offsetHeight / height / 2);
 
     if (obj.x < halfW) {
       obj.x = halfW;
@@ -200,46 +161,28 @@ function animate(now) {
       }
     }
 
-
     // ===== 揺れと回転 =====
 
-    const rotate =
-      Math.sin(
-        elapsed * obj.frequency + obj.phase
-      ) * rotation;
+    const rotate = Math.sin(elapsed * obj.frequency + obj.phase) * rotation;
 
-    const floatY =
-      Math.sin(elapsed * 1.2 + obj.phase)
-      * unit * sway;
-
+    const floatY = Math.sin(elapsed * 1.2 + obj.phase) * unit * sway;
 
     // ===== 描画 =====
 
-    const x =
-      obj.x * width - img.offsetWidth / 2;
+    const x = obj.x * width - img.offsetWidth / 2;
 
-    const y =
-      obj.y * height - img.offsetHeight / 2
-      + floatY;
+    const y = obj.y * height - img.offsetHeight / 2 + floatY;
 
     img.style.transform = `
       translate3d(${x}px, ${y}px, 0)
       rotate(${rotate}deg)
     `;
-
   });
 
   requestAnimationFrame(animate);
 }
 
 requestAnimationFrame(animate);
-
-
-
-
-
-
-
 
 const menuBtn = document.querySelector(".menu-btn");
 const headerMenu = document.querySelector(".header-menu");
@@ -480,67 +423,67 @@ tableStn.addEventListener(
 
 const historyData = [
   {
-    img: "img/history01.png",
+    img: "images/chara1.png",
     txt: "初めてのビオシス\nが観測される",
     name: "矢印マン",
     date: "2113",
   },
   {
-    img: "img/history02.png",
+    img: "images/chara2.png",
     txt: "BIosis\nプロトタイプ誕生",
     name: "Gabuga-6u",
     date: "2121",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara3.png",
     txt: "民間用初ビオシス",
     name: "ミュルモ",
     date: "2123.02",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara4.png",
     txt: "感情表現が分かりやすくなったモデル",
     name: "ステラ",
     date: "2123.08",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara5.png",
     txt: "初の歩行型ビオシス",
     name: "クルシェル",
     date: "2124.01",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara6.png",
     txt: "流動歩行型ビオシス",
     name: "ウミタツノコ",
     date: "2124.06",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara7.png",
     txt: "児童向けビオシス",
     name: "ぺたん",
     date: "2125.04",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara8.png",
     txt: "ハロウィンに生まれた\n怖かわ系ビオシス",
     name: "ミュルモ",
     date: "2125.10",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara9.png",
     txt: "初の人型ビオシス",
     name: "ルミィ",
     date: "2126.05",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara10.png",
     txt: "3Dプロトタイプ",
     name: "メタエモル",
     date: "2126.11",
   },
   {
-    img: "img/history03.png",
+    img: "images/chara11.png",
     txt: "正式版3Dモデル",
     name: "タソガレサクラ",
     date: "2127.01",

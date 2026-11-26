@@ -156,6 +156,7 @@ main {
   /* ロゴ入れたら消す */
   background-color: aqua;
   color: #000;
+  z-index: 5;
 }
 
 #info {
@@ -385,6 +386,95 @@ main {
   border-radius: 10px;
   background-color: var(--back-color);
   border: solid var(--border-size) var(--subfont-color);
+}
+
+.dic-img1 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img2 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img3 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img4 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img5 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img6 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img7 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img8 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img9 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img10 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara10.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dic-img11 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/chara11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #table {
