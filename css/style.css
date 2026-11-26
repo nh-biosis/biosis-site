@@ -55,7 +55,7 @@
   --bold-weight: 500;
   --heavy-weight: 700;
   --header-hight: calc(var(--screen-height) / 15);
-  --hero-hight: var(--screen-height);
+  --hero-hight: calc(var(--screen-height) * 14 / 15);
   --itd-hight: calc(var(--screen-height) * 1.2);
   --mtd-hight: calc(var(--screen-height) * 1.7);
   --dic-hight: auto;
